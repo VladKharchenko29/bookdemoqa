@@ -12,6 +12,10 @@ public class DriverManager {
 
     public static WebDriver webDriver;
 
+    /**
+     * Initializing a chromedriver with chrome options
+     * @return the completed webdriver
+     */
     public static WebDriver getWebDriver() {
         if (webDriver == null) {
             webDriver = new ChromeDriver(DriverUtils.configurationChromeOptions());
@@ -19,7 +23,10 @@ public class DriverManager {
         return webDriver;
     }
 
-    public static void closeWebDriver() throws IOException {
+    /**
+     * Closing a driver and quitting it
+     */
+    public static void closeWebDriver() {
         webDriver.close();
         if (webDriver != null) {
             webDriver.quit();

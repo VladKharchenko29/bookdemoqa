@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 
 public class BasePage {
 
+    /**
+     * Here we are creating a Page Factory to use a @FindBy annotation
+     */
     private final Logger logger = LogManager.getLogManager().getLogger(this.getClass().getName());
 
     public BasePage() {
