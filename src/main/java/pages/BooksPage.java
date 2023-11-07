@@ -1,8 +1,11 @@
 package pages;
 
 import base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import setup.DriverManager;
 
 import java.time.Duration;
@@ -34,8 +37,9 @@ public class BooksPage extends BasePage {
     /**
      * Wait method in case page will load too long
      */
-    private void waitFor() {
-        DriverManager.getWebDriver().manage().timeouts().implicitlyWait(Duration.of(2, ChronoUnit.SECONDS));
+    private void waitFor(WebElement e) {
+        new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(e));
+
     }
 
     /**
@@ -43,8 +47,9 @@ public class BooksPage extends BasePage {
      * @return the same page to use Fluent Interface
      */
     public BooksPage doLogin() {
+        waitFor(loginBtn);
         loginBtn.click();
-        waitFor();
+        waitFor(userName);
         userName.sendKeys("rio5");
         password.sendKeys("rio55W7iii#");
         loginBtn.click();
